@@ -4247,6 +4247,14 @@ class ChatPlus(Star):
             if self.debug_mode:
                 logger.info("【步骤6.6】🎭 表情包图片已被过滤/移除，跳过添加标记")
 
+        # 🔧 戳一戳消息：将原始文本（如"lowgent戳了戳你"）替换为通用文本
+        # 避免昵称为QQ号时污染提示词
+        if poke_info and isinstance(poke_info, dict):
+            poke_replacement = "对方戳了戳你" if poke_info.get("is_poke_bot") else ""
+            if poke_replacement:
+                original_message_text = poke_replacement
+                processed_message = poke_replacement
+
         # 缓存当前用户消息（图片处理通过后再缓存）
         # 注意：缓存处理后的消息（不含元数据），在保存时再添加元数据
         # processed_message 已经是经过图片处理的最终结果（可能是过滤后、转文字后、或原始消息）

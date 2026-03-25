@@ -139,14 +139,14 @@ class MessageProcessor:
 
                 if is_poke_bot:
                     # 戳的是机器人自己
-                    poke_notice = f"\n[戳一戳提示]有人在戳你，戳你的人是{poke_sender_name}(ID:{poke_sender_id})"
+                    poke_notice = f"\n[戳一戳提示]对方戳了戳你"
                     if DEBUG_MODE:
                         logger.info(
                             f"已添加戳一戳提示（戳机器人）: 戳人者={poke_sender_name}"
                         )
                 else:
                     # 戳的是别人
-                    poke_notice = f"\n[戳一戳提示]这是一个戳一戳消息，但不是戳你的，是{poke_sender_name}(ID:{poke_sender_id})在戳{poke_target_name}(ID:{poke_target_id})"
+                    poke_notice = f"\n[戳一戳提示]这是一个戳一戳消息，但不是戳你的"
                     if DEBUG_MODE:
                         logger.info(
                             f"已添加戳一戳提示（戳别人）: 戳人者={poke_sender_name}, 被戳者={poke_target_name}"
@@ -353,13 +353,13 @@ class MessageProcessor:
 
                 if is_poke_bot:
                     # 戳的是机器人自己
-                    poke_notice = f"\n[戳一戳提示]有人在戳你，戳你的人是{poke_sender_name}(ID:{poke_sender_id})"
+                    poke_notice = f"\n[戳一戳提示]对方戳了戳你"
                     logger.info(
                         f"已添加戳一戳提示（戳机器人）: 戳人者={poke_sender_name}"
                     )
                 else:
                     # 戳的是别人
-                    poke_notice = f"\n[戳一戳提示]这是一个戳一戳消息，但不是戳你的，是{poke_sender_name}(ID:{poke_sender_id})在戳{poke_target_name}(ID:{poke_target_id})"
+                    poke_notice = f"\n[戳一戳提示]这是一个戳一戳消息，但不是戳你的"
                     logger.info(
                         f"已添加戳一戳提示（戳别人）: 戳人者={poke_sender_name}, 被戳者={poke_target_name}"
                     )
